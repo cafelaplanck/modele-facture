@@ -1,16 +1,16 @@
 \usepackage{fontspec}
-\usepackage{titlesec}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{paracol}
+%\usepackage{titlesec}
+%\usepackage{fancyhdr}
+%\usepackage{graphicx}
+%\usepackage{paracol}
 \usepackage{anyfontsize}
 \usepackage{wrapfig}
 \usepackage{tikz}
 \usepackage{pythontex}
-\usepackage{booktabs}
+%\usepackage{booktabs}
 %\usepackage[table]{xcolor}
 \usepackage{siunitx}
-\usepackage[margin=1cm, top=150pt, headheight=100pt, bottom=2cm]{geometry}
+%\usepackage[margin=1cm, top=150pt, headheight=100pt, bottom=2cm]{geometry}
 \usepackage[french]{babel}
 \selectlanguage{french}
 \usepackage{emoji}
@@ -18,8 +18,8 @@
 
 \setlength{\columnsep}{1cm}
 
-\fancyhf{}
-\fancyfoot[C]{\today}
+%\fancyhf{}
+%\fancyfoot[C]{\today}
 
 % https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.io.formats.style.Styler.to_latex.html#pandas.io.formats.style.Styler.to_latex
 \usepackage{etoolbox}
@@ -27,3 +27,17 @@
 \sisetup{detect-all = true}
 
 \sisetup{table-auto-round, table-format = 1.2, table-alignment-mode = marker, locale=FR, table-column-width=2cm}
+
+%---------------------------------------------------------------------------------
+%	ADVANCED INVOICE SETTINGS
+%---------------------------------------------------------------------------------
+
+\roundcurrencytodecimals{2} % The number of decimal places to round currency numbers
+\roundquantitytodecimals{2} % The number of decimal places to round quantity numbers
+
+% Advanced settings for changing how numbers are output
+\sisetup{group-minimum-digits=4} % Delimit numbers (e.g. 4000 -> 4,000) when there are this number of digits or more
+\sisetup{group-separator={,}} % Character to use for delimiting digit groups
+\sisetup{output-decimal-marker={.}} % Character to use for specifying decimals
+
+\currencysuffix{} % Some currencies output the currency symbol after the number, such as Sweden's krona specified with a 'kr' suffix. Specify a suffix here if required, otherwise leave this command empty.
