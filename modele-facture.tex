@@ -1,0 +1,112 @@
+\documentclass{CSMinimalInvoice}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Minimal Invoice
+% LaTeX Template
+% Version 1.1 (April 22, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{preambule}
+
+\newcommand{\espacesection}{\begin{minipage}[t]{0.03\textwidth}
+	~ % Populate the minipage with a dummy space so it is spaced correctly
+\end{minipage}}
+
+\taxrate{14.974}
+\currencycode{}
+%\currencycode{CAD}
+\invoicenumber{H2023-1}
+
+\newcommand{\nofacture}{1}
+
+\title{Facture \nofacture}
+\author{La Café La Planck}
+\date{2023-05-08}
+
+\begin{document}
+
+\outputheader{Facture}{\today}
+\outputinvoicenum
+
+% Informations sur la facture
+\begin{minipage}[t]{0.38\textwidth}
+\textbf{Payable:} sur réception\\
+\textbf{Pour:} galettes d'avoine pour événement du SAPHARI\\
+%\textbf{Description:}
+\end{minipage}
+\espacesection
+% Informations du payeur
+\begin{minipage}[t]{0.56\textwidth}
+\textbf{SAPHARI}
+
+FAS-Physique\\
+Complexe des sciences\\
+1375 Avenue Thérèse-Lavoie-Roux\\
+Montréal (Québec)\\
+H2V 0B3
+\end{minipage}
+
+\vfill
+
+%---------------------------------------------------------------------------------
+%	INVOICE ITEMS TABLE
+%---------------------------------------------------------------------------------
+
+% Use the \invoiceitem command to output invoice items. It requires 4 parameters described below:
+% 1) Item description; this should be kept reasonably short so as not to span too many lines
+% 2) Item quantity (or hours); this should be a positive number (with no commas or other symbols) and decimals are allowed
+% 3) Item unit price (or hourly rate); this should be a positive or negative number (with no commas or other symbols) and decimals are allowed
+% 4) Item note; this can be left empty but, if used, it should be kept very short
+
+\begin{invoicetable}
+	\invoiceitem{Galettes d'avoine}{250}{1.35}{}
+	\invoiceitem{Escompte de 5\%}{1}{-16.88}{}
+\end{invoicetable}
+
+\vfill\vfill
+
+\invoiceconditions{Le Café La Planck a agit comme intermédiaire entre le SAPHARI et les Distributions Desserts Plus (TPS 124642323, TVQ 1006956013).}
+
+% Notre information
+\begin{minipage}[t]{0.3\textwidth}
+\itshape
+\textbf{Café La Planck}
+
+% Adresse
+B01103-1375 Avenue Thérèse-Lavoie-Roux\\
+Montréal (Québec)\\
+H2V 0B3
+\end{minipage}
+\espacesection
+% Nos informations de contact
+\begin{minipage}[t]{0.3\textwidth}
+\itshape
+\textbf{Contact}
+
+% Courriel
+\href{mailto:lecafelaplanck@gmail.com}{lecafelaplanck@gmail.com}
+\end{minipage}
+\espacesection
+% Nos informations de paiement
+\begin{minipage}[t]{0.3\textwidth}
+\itshape
+\textbf{Paiement}
+
+Virement Interac en ligne\\
+Virement direct\\
+Caisse Desjardins des Versants du Mont Royal\\
+30208 815 - 055 041 8
+% Informations d'entreprise
+% Informations de paiement
+\end{minipage}
+
+\end{document}
