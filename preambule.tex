@@ -1,0 +1,29 @@
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{paracol}
+\usepackage{anyfontsize}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usepackage{pythontex}
+\usepackage{booktabs}
+%\usepackage[table]{xcolor}
+\usepackage{siunitx}
+\usepackage[margin=1cm, top=150pt, headheight=100pt, bottom=2cm]{geometry}
+\usepackage[french]{babel}
+\selectlanguage{french}
+\usepackage{emoji}
+\usepackage{braket}
+
+\setlength{\columnsep}{1cm}
+
+\fancyhf{}
+\fancyfoot[C]{\today}
+
+% https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.io.formats.style.Styler.to_latex.html#pandas.io.formats.style.Styler.to_latex
+\usepackage{etoolbox}
+\robustify\bfseries
+\sisetup{detect-all = true}
+
+\sisetup{table-auto-round, table-format = 1.2, table-alignment-mode = marker, locale=FR, table-column-width=2cm}

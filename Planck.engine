@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# === LaTeXmk ===
+# Variables pour le scrip LaTeXmk
+export TSBIN="$HOME/Library/TeXShop/bin/tslatexmk"
+export LTMKBIN="$HOME/Library/TeXShop/bin/tslatexmk"
+export LTMKEDIT="$HOME/Library/TeXShop/bin"
+
+# make sure latexmkrcedit exists in bin
+if [ ! -e "${LTMKEDIT}/latexmkrcedit" ] ; then
+	cp "${TSBIN}/latexmkrcDONTedit" "${LTMKEDIT}/latexmkrcedit"
+fi
+
+# Use local rc file platexmkrc if it exists. p = project
+export localrc=""
+if [ -e ./platexmkrc ] ; then
+	export localrc="-r ./platexmkrc"
+fi
+
+# Add the requested options to $pdflatex if there
+if [ -n "${2}" ] ; then
+"${LTMKBIN}"/latexmk -pdf -r "${LTMKEDIT}/latexmkrcedit" -e "\$TSUserCompileOptions='${2}'" -r "${TSBIN}/lualatexmkrc" ${localrc} "$1"
+else
+"${LTMKBIN}"/latexmk -pdf -r "${LTMKEDIT}/latexmkrcedit" -r "${TSBIN}/lualatexmkrc" ${localrc} "$1"
+fi
+
+# === Exécution de PythonTeX ===
+
+filename=$1
+
+# Activer l'environnement «planck»
+source ~/env/planck/bin/activate
+
+# Installer les modules requis par le programme
+python -m pip install --upgrade -r requirements.txt
+
+# Exécuter PythonTeX
+python $(which pythontex)  --interpreter python:python3 $1
+
+# Sortir de l'environnement virtuel Python
+deactivate
+
+# === Dernière exécution de PythonTex ===
+# Add the requested options to $pdflatex if there
+if [ -n "${2}" ] ; then
+"${LTMKBIN}"/latexmk -pdf -r "${LTMKEDIT}/latexmkrcedit" -e "\$TSUserCompileOptions='${2}'" -r "${TSBIN}/lualatexmkrc" ${localrc} "$1"
+else
+"${LTMKBIN}"/latexmk -pdf -r "${LTMKEDIT}/latexmkrcedit" -r "${TSBIN}/lualatexmkrc" ${localrc} "$1"
+fi

@@ -1,0 +1,6 @@
+wheel
+pip
+pygments
+pandas
+gspread
+oauth2client
